@@ -1,0 +1,6 @@
+go-skeleton:
+  build: .
+  environment:
+    ENV_ROLE: 'DEV'
+  ports:
+    - "8080:80"
