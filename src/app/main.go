@@ -1,6 +1,7 @@
 package app
 
 import (
+	"go-skeleton/src/config"
 	"net/http"
 	"time"
 )
@@ -8,6 +9,7 @@ import (
 type server struct {
 	startedAt time.Time
 	router    *http.ServeMux
+	conf      *config.Config
 }
 
 func (s *server) addHandler(path string, handler func(http.ResponseWriter, *http.Request)) {
@@ -31,10 +33,11 @@ func (s *server) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 // NewServer ...
-func NewServer() (http.Handler, error) {
+func NewServer(c *config.Config) (http.Handler, error) {
 	s := &server{
 		startedAt: time.Now(),
 		router:    http.NewServeMux(),
+		conf:      c,
 	}
 	s.setRoutes()
 

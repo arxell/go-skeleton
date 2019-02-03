@@ -4,6 +4,7 @@ import (
 	"compress/gzip"
 	"fmt"
 	app "go-skeleton/src/app"
+	"go-skeleton/src/config"
 	"go-skeleton/src/helpers"
 	"net/http"
 
@@ -15,8 +16,14 @@ func main() {
 	fmt.Println(helpers.Add(1, 2))
 	logger.Info("Start!")
 
+	logger.Info("Create Config!")
+	c, err := config.NewConfig()
+	if err != nil {
+		panic(err)
+	}
+
 	logger.Info("Create AppServer!")
-	appServer, err := app.NewServer()
+	appServer, err := app.NewServer(c)
 	if err != nil {
 		panic(err)
 	}
@@ -29,7 +36,7 @@ func main() {
 
 	logger.Info("Create server!")
 	serv := http.Server{
-		Addr:    ":9090",
+		Addr:    c.Hostport,
 		Handler: handler(appServer),
 	}
 
