@@ -1,8 +1,8 @@
 run: build 
-	./go-skeleton
+	./bin/go-skeleton
 
 build: 
-	go build -o go-skeleton src/main.go
+	go build -o bin/go-skeleton src/main.go
 
 dep:
 	cd src && dep ensure
@@ -25,3 +25,5 @@ docker-build:
 
 docker-run:
 	docker-compose run go-skeleton
+
+docker: docker-build docker-run

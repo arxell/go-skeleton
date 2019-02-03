@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:0803645e1f57fb5271a6edc7570b9ea59bac2e5de67957075a43f3d74c8dbd97"
+  name = "github.com/NYTimes/gziphandler"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2600fb119af974220d3916a5916d6e31176aac1b"
+  version = "v1.0.1"
+
+[[projects]]
   branch = "master"
   digest = "1:aff61b46ef326e4a211e69245a0ca03dee77f850b6221d3fd0f5bc9208591734"
   name = "github.com/google/logger"
@@ -24,6 +32,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/google/logger"]
+  input-imports = [
+    "github.com/NYTimes/gziphandler",
+    "github.com/google/logger",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
