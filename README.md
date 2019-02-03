@@ -19,5 +19,9 @@ cd $GOPATH/src/go-skeleton
 make docker 
 ```
 
+## TODO:
+    * gitlab-ci.yml
+    * test coverage html report 
+
 
 
