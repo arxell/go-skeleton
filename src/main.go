@@ -3,9 +3,9 @@ package main
 import (
 	"compress/gzip"
 	"fmt"
-	app "go-skeleton/src/app"
 	"go-skeleton/src/config"
 	"go-skeleton/src/helpers"
+	"go-skeleton/src/server"
 	"net/http"
 
 	"github.com/NYTimes/gziphandler"
@@ -23,7 +23,7 @@ func main() {
 	}
 
 	logger.Info("Create AppServer!")
-	appServer, err := app.NewServer(c)
+	appserver, err := server.NewServer(c)
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,7 @@ func main() {
 	logger.Info("Create server!")
 	serv := http.Server{
 		Addr:    c.Hostport,
-		Handler: handler(appServer),
+		Handler: handler(appserver),
 	}
 
 	logger.Info("Start server!")
